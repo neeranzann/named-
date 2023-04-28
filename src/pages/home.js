@@ -3,13 +3,14 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router';
 
 const Home = () => {
-  const state = useSelector((store) => store.info);
+  const { infos } = useSelector((store) => store.info);
+
   const nav = useNavigate();
   return (
     <div className='p-5 grid grid-cols-3 '>
-      {state.length === 0 ? <h1>No Data</h1> : state.map((info, i) => {
+      {infos.length === 0 ? <h1>No Data</h1> : infos.map((info, i) => {
         return <div key={i}>
-          <img src={info.review} alt="" />
+          <img className='object-cover h-[250px]' src={info.review} alt="" />
           <div className=' p-2 font-bold space-y-2 text-xl'>
             <p>{info.name}</p>
             <p>{info.email}</p>

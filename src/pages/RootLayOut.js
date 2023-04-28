@@ -1,13 +1,13 @@
 import React from 'react'
 import { Outlet } from 'react-router'
-import Headers from '../Components/Header'
+import Headers from '../Components/Headers'
 
 const RootLayOut = () => {
 
 
   return (
     <>
-      <Headers/>
+      <Headers />
 
       <Outlet />
 

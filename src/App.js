@@ -4,12 +4,17 @@ import React from 'react'
 import { Route, Routes } from 'react-router'
 import RootLayOut from './pages/RootLayOut'
 import AddForm from './Components/AddForm'
-import Home from './pages/home'
+import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import UpdateForm from './Components/UpdateForm'
 
 
 const App = () => {
+
+  // let m = [{ id: 1, title: 'hello' }, { id: 2, title: 'cio' }]
+
+  // m = m.map((d) => d.id === 1 ? { id: 1, title: 'welcome' } : d);
+  // console.log(m);
 
   return (
     <>

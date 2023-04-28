@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import InfoReducer from './infoslice'
+import infoReducer from './infoSlice';
 
 
 
 export const store = configureStore({
   reducer: {
-    info: InfoReducer
+    info: infoReducer
   }
 })

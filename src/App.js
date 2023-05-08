@@ -1,60 +1,63 @@
-
-
 import React from 'react'
+import { Route, Routes } from 'react-router'
+import RootLayOut from './Pages/RootLayOut'
+import HomePage from './Pages/HomePage'
+import ProductDetail from './Pages/ProductDetail'
+import CartPage from './Pages/user_page/CartPage'
+import Shipping from './Pages/user_page/Shipping'
+import PlaceOrder from './Pages/user_page/PlaceOrder'
+import ProductList from './Pages/admin_page/ProductList'
+import Login from './Pages/auth_page/Login'
+import SignUp from './Pages/auth_page/SignUp'
+import AddProduct from './Pages/admin_page/AddProduct'
+import OrderDetail from './Pages/user_page/OrderDetail'
+import UserProfile from './Pages/user_page/UserProfile'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import AuthRoutes from './Components/AuthRoutes'
+import AdminRoutes from './Components/AdminRoutes'
+import UserRoutes from './Components/UserRoutes'
 
 const App = () => {
 
-
-
-  const data = [
-    {
-      id: 1,
-      title: 'Avatar',
-      image: 'https://www.imdb.com/title/tt1630029/mediaviewer/rm92486145/?ref_=tt_ov_i'
-    },
-    {
-      id: 2,
-      title: 'Smile',
-      image: 'https://variety.com/wp-content/uploads/2022/08/smile.jpg?w=681&h=383&crop=1&resize=681%2C383'
-    },
-
-  ];
-  let x;
-
-  setTimeout(() => {
-    x = {
-      title: 'hello 4 seconds'
-    }
-    console.log('hello 4 second');
-  }, [4000])
-
-  // const dat = new Date();
-  // console.log(dat.getFullYear());
-  // console.log(dat.getDay());
-  // console.log(dat.getHours())
-  const per = {
-    // data: {
-    //   id: 1
-    // }
-  };
-
-  let p = 90;
   return (
-    <div>
-      <h1>  {p ?? 'hello'}</h1>
 
-      <h1>{per.data?.id}</h1>
+    <>
+      <Routes>
+
+        <Route path='/' element={<RootLayOut />} >
+          <Route index element={<HomePage />} />
+
+          <Route element={<AdminRoutes />}>
+            <Route path='product_list' element={<ProductList />} />
+            <Route path='product_add' element={<AddProduct />} />
+          </Route>
 
 
-      {data.map((d) => {
-        return <div key={d.id}>
-          <h1>{d.title}</h1>
-          {/* <img src={d.image} alt="" /> */}
-        </div>
-      })}
+          <Route element={<AuthRoutes />}>
+            <Route path='cart' element={<CartPage />} />
+            <Route path='user/shipping' element={<Shipping />} />
+            <Route path='order/:id' element={<OrderDetail />} />
+            <Route path='user_profile' element={<UserProfile />} />
+            <Route path='user/placeorder' element={<PlaceOrder />} />
+
+          </Route>
+
+          <Route element={<UserRoutes />}>
+            <Route path='user_login' element={<Login />} />
+            <Route path='user_signUp' element={<SignUp />} />
+          </Route>
 
 
-    </div>
+
+          <Route path='product/:id' element={<ProductDetail />} />
+
+
+        </Route>
+
+      </Routes>
+      <ToastContainer autoClose={500} position='top-right' />
+    </>
   )
 }
 

@@ -8,25 +8,31 @@ import {
   Select,
   Textarea
 } from "@material-tailwind/react";
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router'
-import { useNavigate } from 'react-router';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
 
 import { nanoid } from '@reduxjs/toolkit';
+
+import { useSelector } from 'react-redux';
+
+import { useNavigate } from 'react-router';
+
+import { useFormik } from 'formik';
+
+import * as Yup from 'yup';
+
+import { useDispatch } from 'react-redux';
+
+import { useSearchParams } from 'react-router-dom';
 
 
 
 
 
 const UpdateForm = () => {
-  const { id } = useParams();
+  const { id } = useSearchParams();
   const state = useSelector((store) => store.info);
-  console.log(state);
+  
   const info = state.find((i) => i.id === id);
-  const dispatch = useDispatch();
+  const dispatch= useDispatch();
   const nav = useNavigate();
 
   const infoSchema = Yup.object().shape({
